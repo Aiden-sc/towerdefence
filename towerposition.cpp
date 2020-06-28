@@ -8,7 +8,6 @@ TowerPosition::TowerPosition(QPoint pos, const QPixmap &sprite/* = QPixmap(":/im
 	, m_pos(pos)
 	, m_sprite(sprite)
 {
-	
 }
 
 const QPoint TowerPosition::centerPos() const

@@ -3,6 +3,8 @@
 #include "waypoint.h"
 #include "enemy.h"
 #include "bullet.h"
+#include "audioplayer.h"
+#include "plistreader.h"
 #include <QPainter>
 #include <QMouseEvent>
 #include <QtGlobal>
@@ -43,6 +45,29 @@ MainWindow::~MainWindow()
 	delete ui;
 }
 
+void MainWindow::loadTowerPositions()
+{
+	QFile file(":/config/TowersPosition.plist");
+	if (!file.open(QFile::ReadOnly | QFile::Text))
+	{
+		QMessageBox::warning(this, "TowerDefense", "Cannot Open TowersPosition.plist");
+		return;
+	}
+
+	PListReader reader;
+	reader.read(&file);
+
+	QList<QVariant> array = reader.data();
+	foreach (QVariant dict, array)
+	{
+		QMap<QString, QVariant> point = dict.toMap();
+		int x = point.value("x").toInt();
+		int y = point.value("y").toInt();
+		m_towerPositionsList.push_back(QPoint(x, y));
+	}
+
+	file.close();
+}
 
 void MainWindow::paintEvent(QPaintEvent *)
 {
@@ -142,6 +167,10 @@ void MainWindow::awardGold(int gold)
 	update();
 }
 
+AudioPlayer *MainWindow::audioPlayer() const
+{
+	return m_audioPlayer;
+}
 
 void MainWindow::addWayPoints()
 {
@@ -218,6 +247,22 @@ void MainWindow::updateMap()
 	update();
 }
 
+void MainWindow::preLoadWavesInfo()
+{
+	QFile file(":/config/Waves.plist");
+	if (!file.open(QFile::ReadOnly | QFile::Text))
+	{
+		QMessageBox::warning(this, "TowerDefense", "Cannot Open TowersPosition.plist");
+		return;
+	}
+
+	PListReader reader;
+	reader.read(&file);
+
+	m_wavesInfo = reader.data();
+
+	file.close();
+}
 
 bool MainWindow::loadWave()
 {

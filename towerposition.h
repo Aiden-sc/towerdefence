@@ -28,4 +28,3 @@ private:
 };
 
 #endif // TOWERPOSITION_H
-

@@ -29,6 +29,7 @@ public:
 	void addBullet(Bullet *bullet);
 	void awardGold(int gold);
 
+	AudioPlayer* audioPlayer() const;
 	QList<Enemy *> enemyList() const;
 
 protected:
@@ -57,6 +58,7 @@ private:
 	int						m_playrGold;
 	bool					m_gameEnded;
 	bool					m_gameWin;
+	AudioPlayer *			m_audioPlayer;
 	QList<QVariant>			m_wavesInfo;
 	QList<TowerPosition>	m_towerPositionsList;
 	QList<Tower *>			m_towersList;
@@ -65,4 +67,4 @@ private:
 	QList<Bullet *>			m_bulletList;
 };
 
-#endif
+#endif // MAINWINDOW_H

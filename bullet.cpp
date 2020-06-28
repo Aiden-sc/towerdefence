@@ -24,7 +24,7 @@ void Bullet::draw(QPainter *painter) const
 }
 
 void Bullet::move()
-{
+{	
 	static const int duration = 100;
 	QPropertyAnimation *animation = new QPropertyAnimation(this, "m_currentPos");
 	animation->setDuration(duration);

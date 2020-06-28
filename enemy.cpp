@@ -3,6 +3,7 @@
 #include "tower.h"
 #include "utility.h"
 #include "mainwindow.h"
+#include "audioplayer.h"
 #include <QPainter>
 #include <QColor>
 #include <QDebug>
@@ -65,6 +66,7 @@ void Enemy::move()
 	QVector2D normalized(targetPoint - m_pos);
 	normalized.normalize();
 	m_pos = m_pos + normalized.toPoint() * movementSpeed;
+
 	m_rotationSprite = qRadiansToDegrees(qAtan2(normalized.y(), normalized.x())) + 180;
 }
 

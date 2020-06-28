@@ -32,9 +32,9 @@ private slots:
 
 private:
 	bool			m_attacking;
-	int				m_attackRange;	
-	int				m_damage;		
-	int				m_fireRate;		
+        int				m_attackRange;
+        int				m_damage;
+        int				m_fireRate;
 	qreal			m_rotationSprite;
 
 	Enemy *			m_chooseEnemy;
