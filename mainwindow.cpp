@@ -12,7 +12,7 @@
 #include <QTimer>
 #include <QXmlStreamReader>
 #include <QtDebug>
-  
+     
 static const int TowerCost = 300;
 
 MainWindow::MainWindow(QWidget *parent)
